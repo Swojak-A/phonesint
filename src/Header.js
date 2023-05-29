@@ -7,17 +7,22 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import SubmissionMessage from './SubmissionMessage';
-
+import { validatePhoneNumber } from './phoneNumberUtils';
 
 function Header() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
-    const [submittedPhoneNumberValue, setSubmittedPhoneNumberValue] = useState('');
+    const [feedbackMessage, setFeedbackMessage] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const { isValid, message } = validatePhoneNumber(inputPhoneNumberValue, 'PL');
         setIsSubmitted(true);
-        setSubmittedPhoneNumberValue(inputPhoneNumberValue);
+        if (isValid) {
+          setFeedbackMessage(message);
+        } else {
+          setFeedbackMessage(message);
+        }
     }
 
     const handleInputChange = (event) => {
@@ -45,7 +50,7 @@ function Header() {
             </Form>
             <Row>
                 <Col>
-                    {isSubmitted && <SubmissionMessage submittedValue={submittedPhoneNumberValue} />}
+                    {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} />}
                 </Col>
             </Row>
           </Col>
