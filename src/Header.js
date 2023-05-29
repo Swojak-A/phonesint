@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import SubmissionMessage from './SubmissionMessage';
+
 
 function Header() {
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -43,7 +45,7 @@ function Header() {
             </Form>
             <Row>
                 <Col>
-                    {isSubmitted && <p className="mt-3">You have submitted: {submittedPhoneNumberValue}</p>}
+                    {isSubmitted && <SubmissionMessage submittedValue={submittedPhoneNumberValue} />}
                 </Col>
             </Row>
           </Col>
