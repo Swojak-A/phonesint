@@ -41,11 +41,11 @@ export function validatePhoneNumber(number, countryCode) {
             } else {
                 formattedNumber = phoneUtil.format(phoneNumber, PNF.INTERNATIONAL);
             }
-            return { isValid: true, message: `Good job! Your input was: ${formattedNumber}`};
+            return { isValid: true, message: `Good job! Your input was: ${formattedNumber}`, phoneNumber: formattedNumber};
         } else {
-            return { isValid: false, message: 'This input is not a valid phone number.'};
+            return { isValid: false, message: 'This input is not a valid phone number.', phoneNumber: null};
         }
     } catch (error) {
-        return { isValid: false, message: `An error occured while parsing: ${error.message}`};
+        return { isValid: false, message: `An error occured while parsing: ${error.message}`, phoneNumber: null};
     }
 }

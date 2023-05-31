@@ -7,19 +7,23 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import SubmissionMessage from './SubmissionMessage';
+import ResultCards from './ResultCards';
+
 import { validatePhoneNumber } from './phoneNumberUtils';
 
 function Header() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
     const [feedbackMessage, setFeedbackMessage] = useState('');
+    const [validatedPhoneNumber, setValidatedPhoneNumber] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const { isValid, message } = validatePhoneNumber(inputPhoneNumberValue, 'PL');
+        const { isValid, message, phoneNumber } = validatePhoneNumber(inputPhoneNumberValue, 'PL');
         setIsSubmitted(true);
         if (isValid) {
           setFeedbackMessage(message);
+          setValidatedPhoneNumber(phoneNumber);
         } else {
           setFeedbackMessage(message);
         }
@@ -53,6 +57,7 @@ function Header() {
                     {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} />}
                 </Col>
             </Row>
+            {isSubmitted && <ResultCards phoneNumber={validatedPhoneNumber}/>}
           </Col>
         </Row>
       </Container>
