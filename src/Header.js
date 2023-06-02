@@ -11,11 +11,9 @@ import ResultCards from './ResultCards';
 
 import { validatePhoneNumber } from './phoneNumberUtils';
 
-function Header() {
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
-    const [feedbackMessage, setFeedbackMessage] = useState('');
-    const [validatedPhoneNumber, setValidatedPhoneNumber] = useState('');
+  function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber })  {
+      const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
+      const [feedbackMessage, setFeedbackMessage] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -36,20 +34,22 @@ function Header() {
     return (
       <Container className="my-4">
         <Row>
-          <Col>
+          <Col md={12}>
             <h2 className="mb-3">Generate Google searches related to specific phone number:</h2>
             <Form onSubmit={handleSubmit}>
                 <Row>
-                    <Col sm={6}>
+                    <Col sm={1}></Col>
+                    <Col sm={8}>
                         <Form.Group controlId="formBasicSearch">
-                        <Form.Control type="search" placeholder="Enter phone number..." value={inputPhoneNumberValue} onChange={handleInputChange}/>
+                        <Form.Control type="search" placeholder="Enter phone number..." value={inputPhoneNumberValue} onChange={handleInputChange} size="lg"/>
                         </Form.Group>
                     </Col>
                     <Col sm={2}>
-                        <Button variant="primary" type="submit" className="w-100">
-                        Generate
+                        <Button variant="primary" type="submit" size="lg" className="w-100">
+                          Generate
                         </Button>
                     </Col>
+                    <Col sm={1}></Col>
                 </Row>
             </Form>
             <Row>
@@ -57,7 +57,6 @@ function Header() {
                     {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} />}
                 </Col>
             </Row>
-            {isSubmitted && <ResultCards phoneNumber={validatedPhoneNumber}/>}
           </Col>
         </Row>
       </Container>
