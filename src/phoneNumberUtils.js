@@ -49,3 +49,8 @@ export function validatePhoneNumber(number, countryCode) {
         return { isValid: false, message: `An error occured while parsing: ${error.message}`, phoneNumber: null};
     }
 }
+
+
+export function formatForUrl(phoneNumber) {
+    return phoneNumber.replace("+", '%2B').replaceAll(/ /g, '+');
+}
