@@ -27,7 +27,7 @@ function App() {
         setValidatedPhoneNumber={setValidatedPhoneNumber}
       />
 
-      { isSubmitted && <ResultCards phoneNumber={validatedPhoneNumber}/> }
+      { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber}/> }
     </>
   );
 }
