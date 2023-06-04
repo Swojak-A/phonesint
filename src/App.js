@@ -12,6 +12,7 @@ import ResultCards from './ResultCards';
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [validatedPhoneNumber, setValidatedPhoneNumber] = useState('');
+  const [selectedCountryCode, setSelectedCountryCode] = useState('PL');
 
   return (
     <>
@@ -25,6 +26,8 @@ function App() {
         isSubmitted={isSubmitted}
         setIsSubmitted={setIsSubmitted}
         setValidatedPhoneNumber={setValidatedPhoneNumber}
+        selectedCountryCode={selectedCountryCode}
+        setSelectedCountryCode={setSelectedCountryCode}
       />
 
       { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber}/> }
