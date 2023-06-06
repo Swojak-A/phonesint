@@ -7,8 +7,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { formatForUrl } from "./phoneNumberUtils";
-
 const countryPrefixes = ["", '+48', '0048', '48'];
 const nationalNumberFormats = [' ', '-', ''];
 

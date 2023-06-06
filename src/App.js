@@ -7,8 +7,8 @@ import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
-import Header from './Header';
-import ResultCards from './ResultCards';
+import Header from './components/Header';
+import ResultCards from './components/ResultCards';
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
