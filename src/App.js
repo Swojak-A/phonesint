@@ -1,6 +1,7 @@
 import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'flag-icon-css/css/flag-icon.min.css';
 
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';

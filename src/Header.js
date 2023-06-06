@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+import FlagIcon from './FlagIcon';
+
 import SubmissionMessage from './SubmissionMessage';
 
 import countryCodes from './countryCodes';
@@ -53,7 +55,7 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
                       <Dropdown.Menu>
                         {countryCodes.map(code => 
                           <Dropdown.Item eventKey={code} key={code}>
-                            {code}
+                            <FlagIcon code={code.toLowerCase()}/> {code}
                           </Dropdown.Item>
                         )}
                       </Dropdown.Menu>
