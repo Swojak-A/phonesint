@@ -31,7 +31,7 @@ function App() {
         setSelectedCountryCode={setSelectedCountryCode}
       />
 
-      { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber}/> }
+      { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber} countryCode={selectedCountryCode}/> }
     </>
   );
 }

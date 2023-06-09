@@ -3,11 +3,11 @@ import { parse, isValidNumber } from 'google-libphonenumber';
 const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
 
-const mobileStarts = ["45", "50", "51", "53", "57", "60", "66", "69", "72", "73", "78", "79", "88"];
+const PLMobileStarts = ["45", "50", "51", "53", "57", "60", "66", "69", "72", "73", "78", "79", "88"];
 
 
 export function determinePLMobileNumber(plNumber) {
-    let isMobile = mobileStarts.some(start => plNumber.startsWith(start));
+    let isMobile = PLMobileStarts.some(start => plNumber.startsWith(start));
 
     if (isMobile) {
         return true;
@@ -36,7 +36,7 @@ export function validatePhoneNumber(number, countryCode) {
     try {
         const phoneNumber = phoneUtil.parse(number, countryCode);
         if (phoneUtil.isValidNumber(phoneNumber)) {
-            if (countryCode === 'PL') {
+            if (countryCode.toLowerCase() === 'pl') {
                 formattedNumber = formatPLPhoneNumber(phoneNumber);
             } else {
                 formattedNumber = phoneUtil.format(phoneNumber, PNF.INTERNATIONAL);
