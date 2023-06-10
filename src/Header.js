@@ -7,17 +7,24 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import SubmissionMessage from './SubmissionMessage';
+import ResultCards from './ResultCards';
 
+import { validatePhoneNumber } from './phoneNumberUtils';
 
-function Header() {
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
-    const [submittedPhoneNumberValue, setSubmittedPhoneNumberValue] = useState('');
+  function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber })  {
+      const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
+      const [feedbackMessage, setFeedbackMessage] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const { isValid, message, phoneNumber } = validatePhoneNumber(inputPhoneNumberValue, 'PL');
         setIsSubmitted(true);
-        setSubmittedPhoneNumberValue(inputPhoneNumberValue);
+        if (isValid) {
+          setFeedbackMessage(message);
+          setValidatedPhoneNumber(phoneNumber);
+        } else {
+          setFeedbackMessage(message);
+        }
     }
 
     const handleInputChange = (event) => {
@@ -27,25 +34,27 @@ function Header() {
     return (
       <Container className="my-4">
         <Row>
-          <Col>
+          <Col md={12}>
             <h2 className="mb-3">Generate Google searches related to specific phone number:</h2>
             <Form onSubmit={handleSubmit}>
                 <Row>
-                    <Col sm={6}>
+                    <Col sm={1}></Col>
+                    <Col sm={8}>
                         <Form.Group controlId="formBasicSearch">
-                        <Form.Control type="search" placeholder="Enter phone number..." value={inputPhoneNumberValue} onChange={handleInputChange}/>
+                        <Form.Control type="search" placeholder="Enter phone number..." value={inputPhoneNumberValue} onChange={handleInputChange} size="lg"/>
                         </Form.Group>
                     </Col>
                     <Col sm={2}>
-                        <Button variant="primary" type="submit" className="w-100">
-                        Generate
+                        <Button variant="primary" type="submit" size="lg" className="w-100">
+                          Generate
                         </Button>
                     </Col>
+                    <Col sm={1}></Col>
                 </Row>
             </Form>
             <Row>
                 <Col>
-                    {isSubmitted && <SubmissionMessage submittedValue={submittedPhoneNumberValue} />}
+                    {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} />}
                 </Col>
             </Row>
           </Col>

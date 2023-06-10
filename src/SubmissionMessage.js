@@ -2,11 +2,11 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-function SubmissionMessage({ submittedValue }) {
+function SubmissionMessage({ feedbackMessage }) {
   return (
     <Row>
       <Col>
-        <p className="mt-3">Good job! Your input was: {submittedValue}</p>
+        <p className="mt-3">{feedbackMessage}</p>
       </Col>
     </Row>
   );
