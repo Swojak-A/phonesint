@@ -5,22 +5,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
 
-import FlagIcon from './FlagIcon';
-
+import FlagDropdown from './FlagDropdown';
 import SubmissionMessage from './SubmissionMessage';
 
-import countryCodes from './countryCodes';
-import { validatePhoneNumber } from './phoneNumberUtils';
+import { validatePhoneNumber } from '../utils/phoneNumberUtils';
 
 
 function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selectedCountryCode, setSelectedCountryCode })  {
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
-  
-  console.log('Header');
-  console.log(countryCodes);
 
   const handleSubmit = (event) => {
       event.preventDefault();
@@ -47,19 +41,7 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
               <Row>
                   <Col sm={1}></Col>
                   <Col sm={1}>
-                    <Dropdown onSelect={setSelectedCountryCode}>
-                      <Dropdown.Toggle variant="success" id="dropdown-basic" size="lg" className="w-100">
-                        {selectedCountryCode}
-                      </Dropdown.Toggle>
-
-                      <Dropdown.Menu>
-                        {countryCodes.map(code => 
-                          <Dropdown.Item eventKey={code} key={code}>
-                            <FlagIcon code={code.toLowerCase()}/> {code}
-                          </Dropdown.Item>
-                        )}
-                      </Dropdown.Menu>
-                    </Dropdown>
+                    <FlagDropdown setSelectedCountryCode={setSelectedCountryCode} selectedCountryCode={selectedCountryCode} />
                   </Col>
                   <Col sm={7}>
                       <Form.Group controlId="formBasicSearch">
