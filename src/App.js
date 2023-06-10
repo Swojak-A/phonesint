@@ -1,6 +1,7 @@
 import './App.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'flag-icon-css/css/flag-icon.min.css';
 
 import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
@@ -12,6 +13,7 @@ import ResultCards from './ResultCards';
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [validatedPhoneNumber, setValidatedPhoneNumber] = useState('');
+  const [selectedCountryCode, setSelectedCountryCode] = useState('PL');
 
   return (
     <>
@@ -25,6 +27,8 @@ function App() {
         isSubmitted={isSubmitted}
         setIsSubmitted={setIsSubmitted}
         setValidatedPhoneNumber={setValidatedPhoneNumber}
+        selectedCountryCode={selectedCountryCode}
+        setSelectedCountryCode={setSelectedCountryCode}
       />
 
       { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber}/> }
