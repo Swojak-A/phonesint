@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.no-margin {
+  margin: 0;
+}
+
+.header {
+  padding: 4em 2em;
+}
+
+.header h1 {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.header .submission-message {
+  padding-top: 1.5em;
+}

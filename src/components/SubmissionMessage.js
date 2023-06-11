@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 
 function SubmissionMessage({ feedbackMessage }) {
   return (
-    <Row>
+    <Row className='submission-message'>
       <Col>
         <p className="mt-3">{feedbackMessage}</p>
       </Col>
