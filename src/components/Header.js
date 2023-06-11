@@ -15,6 +15,7 @@ import { validatePhoneNumber } from '../utils/phoneNumberUtils';
 function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selectedCountryCode, setSelectedCountryCode })  {
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [feedbackVariant, setFeedbackVariant] = useState('primary');
 
   const handleSubmit = (event) => {
       event.preventDefault();
@@ -22,9 +23,11 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
       setIsSubmitted(true);
       if (isValid) {
         setFeedbackMessage(message);
+        setFeedbackVariant('primary');
         setValidatedPhoneNumber(phoneNumber);
       } else {
         setFeedbackMessage(message);
+        setFeedbackVariant('danger');
       }
   }
 
@@ -59,7 +62,7 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
             </Form>
             <Row className='my-4'>
                 <Col>
-                    {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} />}
+                    {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} feedbackVariant={feedbackVariant}/>}
                 </Col>
             </Row>
           </Col>

@@ -43,7 +43,7 @@ export function validatePhoneNumber(number, countryCode) {
             }
             return { isValid: true, message: `Good job! Your input was: ${formattedNumber}`, phoneNumber: formattedNumber};
         } else {
-            return { isValid: false, message: 'This input is not a valid phone number.', phoneNumber: null};
+            return { isValid: false, message: 'This input does not seem to be a valid phone number.', phoneNumber: null};
         }
     } catch (error) {
         return { isValid: false, message: `An error occured while parsing: ${error.message}`, phoneNumber: null};
