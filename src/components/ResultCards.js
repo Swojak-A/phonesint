@@ -6,34 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import CopyToClipboardButton from "./CopyToClipboardButton";
-import countryCodeMappings from "../consts/countryCodeMappings";
-
-
-function formatNationalNumber(number, separator) {
-    return number.split(' ').join(separator);
-}
-
-
-function generateFormats(formattedNumber, countryCode) {
-    // In this case we rely on the fact that the number is formatted in certain way:
-    // - starts with '+XX ' (where XX is country code)
-    // - there are already pre-existing spaces in the national number
-    // Without both of these assumptions present, the function will produce incorrect results.
-
-    console.log(`generateFormats, formatted number: ${formattedNumber}`);
-
-    const countryCodeMapping = countryCodeMappings[countryCode.toLowerCase()];
-
-    const nationalNumber = formattedNumber.slice(countryCodeMapping.prefixSlice);
-
-    return countryCodeMapping.prefixesArray.reduce((formats, prefix) => {
-        countryCodeMapping.separatorsArray.forEach(separator => {
-            const reformattedNumber = formatNationalNumber(nationalNumber, separator);
-            formats.push(`${prefix}${prefix ? " " : ""}${reformattedNumber}`);
-        });
-        return formats;
-    }, []);
-}
+import { generateFormats } from "../utils/phoneNumberUtils";
 
 
 function ResultCards({ phoneNumber, countryCode }) {
