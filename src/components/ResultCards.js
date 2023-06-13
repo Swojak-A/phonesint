@@ -2,16 +2,11 @@ import React from "react";
 
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
+import CopyToClipboardButton from "./CopyToClipboardButton";
 import countryCodeMappings from "../consts/countryCodeMappings";
-
-
-const countryPrefixes = ["", '+48', '0048', '48'];
-const nationalNumberFormats = [' ', '-', ''];
 
 
 function formatNationalNumber(number, separator) {
@@ -45,11 +40,6 @@ function ResultCards({ phoneNumber, countryCode }) {
     const phoneNumberFormats = generateFormats(phoneNumber, countryCode);
     const [copiedIndex, setCopiedIndex] = React.useState(null);
 
-    const onCopy = (index) => {
-        setCopiedIndex(index);
-        setTimeout(() => setCopiedIndex(null), 3000); // reset after 3 seconds
-      };
-
     return (
         <Container className="my-5">
             {phoneNumberFormats.map((formattedNumber, index) => {
@@ -68,11 +58,12 @@ function ResultCards({ phoneNumber, countryCode }) {
                                 </Card.Link>
                             </Col>
                             <Col md={2}>
-                                <CopyToClipboard text={googleSearch} onCopy={() => onCopy(index)}>
-                                <Button variant="secondary" style={{width: '100%'}}>
-                                    {copiedIndex === index ? "Copied!" : "Copy to clipboard"}
-                                </Button>
-                                </CopyToClipboard>
+                                    <CopyToClipboardButton
+                                        text={googleSearch}
+                                        index={index}
+                                        copiedIndex={copiedIndex}
+                                        setCopiedIndex={setCopiedIndex}
+                                    />
                             </Col>
                         </Row>
                     </Card.Body>
