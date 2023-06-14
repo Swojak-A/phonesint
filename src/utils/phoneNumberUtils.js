@@ -1,5 +1,3 @@
-import { parse, isValidNumber } from 'google-libphonenumber';
-
 import countryCodeMappings from "../consts/countryCodeMappings";
 
 
