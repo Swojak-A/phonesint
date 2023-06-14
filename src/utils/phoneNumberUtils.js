@@ -1,5 +1,8 @@
 import { parse, isValidNumber } from 'google-libphonenumber';
 
+import countryCodeMappings from "../consts/countryCodeMappings";
+
+
 const phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 const PNF = require('google-libphonenumber').PhoneNumberFormat;
 
@@ -43,9 +46,34 @@ export function validatePhoneNumber(number, countryCode) {
             }
             return { isValid: true, message: `Good job! Your input was: ${formattedNumber}`, phoneNumber: formattedNumber};
         } else {
-            return { isValid: false, message: 'This input is not a valid phone number.', phoneNumber: null};
+            return { isValid: false, message: 'This input does not seem to be a valid phone number.', phoneNumber: null};
         }
     } catch (error) {
         return { isValid: false, message: `An error occured while parsing: ${error.message}`, phoneNumber: null};
     }
+}
+
+
+export function formatNationalNumber(number, separator) {
+    return number.split(' ').join(separator);
+}
+
+
+export function generateFormats(formattedNumber, countryCode) {
+    // In this case we rely on the fact that the number is formatted in certain way:
+    // - starts with '+XX ' (where XX is country code)
+    // - there are already pre-existing spaces in the national number
+    // Without both of these assumptions present, the function will produce incorrect results.
+
+    const countryCodeMapping = countryCodeMappings[countryCode.toLowerCase()];
+
+    const nationalNumber = formattedNumber.slice(countryCodeMapping.prefixSlice);
+
+    return countryCodeMapping.prefixesArray.reduce((formats, prefix) => {
+        countryCodeMapping.separatorsArray.forEach(separator => {
+            const reformattedNumber = formatNationalNumber(nationalNumber, separator);
+            formats.push(`${prefix}${prefix ? " " : ""}${reformattedNumber}`);
+        });
+        return formats;
+    }, []);
 }

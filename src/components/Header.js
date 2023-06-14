@@ -15,6 +15,7 @@ import { validatePhoneNumber } from '../utils/phoneNumberUtils';
 function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selectedCountryCode, setSelectedCountryCode })  {
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState('');
   const [feedbackMessage, setFeedbackMessage] = useState('');
+  const [feedbackVariant, setFeedbackVariant] = useState('primary');
 
   const handleSubmit = (event) => {
       event.preventDefault();
@@ -22,9 +23,11 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
       setIsSubmitted(true);
       if (isValid) {
         setFeedbackMessage(message);
+        setFeedbackVariant('primary');
         setValidatedPhoneNumber(phoneNumber);
       } else {
         setFeedbackMessage(message);
+        setFeedbackVariant('danger');
       }
   }
 
@@ -33,36 +36,38 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
   }
 
   return (
-    <Container className="my-4">
-      <Row>
-        <Col md={12}>
-          <h2 className="mb-3">Generate Google searches related to specific phone number:</h2>
-          <Form onSubmit={handleSubmit}>
-              <Row>
-                  <Col sm={1}></Col>
-                  <Col sm={1}>
-                    <FlagDropdown setSelectedCountryCode={setSelectedCountryCode} selectedCountryCode={selectedCountryCode} />
-                  </Col>
-                  <Col sm={7}>
-                      <Form.Group controlId="formBasicSearch">
-                      <Form.Control type="search" placeholder="Enter phone number..." value={inputPhoneNumberValue} onChange={handleInputChange} size="lg"/>
-                      </Form.Group>
-                  </Col>
-                  <Col sm={2}>
-                      <Button variant="primary" type="submit" size="lg" className="w-100">
-                        Generate
-                      </Button>
-                  </Col>
-                  <Col sm={1}></Col>
-              </Row>
-          </Form>
-          <Row>
-              <Col>
-                  {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} />}
-              </Col>
-          </Row>
-        </Col>
-      </Row>
+    <Container fluid className='text-bg-light'>
+      <Container className="header">
+        <Row>
+          <Col md={12}>
+            <h1 className="mb-3">Generate Google searches for the phone number:</h1>
+            <Form onSubmit={handleSubmit}>
+                <Row>
+                    <Col sm={1}></Col>
+                    <Col sm={1}>
+                      <FlagDropdown setSelectedCountryCode={setSelectedCountryCode} selectedCountryCode={selectedCountryCode} />
+                    </Col>
+                    <Col sm={7}>
+                        <Form.Group controlId="formBasicSearch">
+                        <Form.Control type="search" placeholder="Enter phone number..." value={inputPhoneNumberValue} onChange={handleInputChange} size="lg"/>
+                        </Form.Group>
+                    </Col>
+                    <Col sm={2}>
+                        <Button variant="primary" type="submit" size="lg" className="w-100">
+                          Generate
+                        </Button>
+                    </Col>
+                    <Col sm={1}></Col>
+                </Row>
+            </Form>
+            <Row className='my-4'>
+                <Col>
+                    {isSubmitted && <SubmissionMessage feedbackMessage={feedbackMessage} feedbackVariant={feedbackVariant}/>}
+                </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
     </Container>
   );
 }
