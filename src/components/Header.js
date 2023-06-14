@@ -40,7 +40,7 @@ function Header({ isSubmitted, setIsSubmitted, setValidatedPhoneNumber, selected
       <Container className="header">
         <Row>
           <Col md={12}>
-            <h1 className="mb-3">Generate Google searches for phone number:</h1>
+            <h1 className="mb-3">Generate Google searches for the phone number:</h1>
             <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col sm={1}></Col>
