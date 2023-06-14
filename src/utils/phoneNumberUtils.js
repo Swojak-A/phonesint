@@ -65,8 +65,6 @@ export function generateFormats(formattedNumber, countryCode) {
     // - there are already pre-existing spaces in the national number
     // Without both of these assumptions present, the function will produce incorrect results.
 
-    console.log(`generateFormats, formatted number: ${formattedNumber}`);
-
     const countryCodeMapping = countryCodeMappings[countryCode.toLowerCase()];
 
     const nationalNumber = formattedNumber.slice(countryCodeMapping.prefixSlice);

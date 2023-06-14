@@ -24,7 +24,7 @@ function ResultCards({ phoneNumber, countryCode }) {
 
       // Clean up function to clear the timeout in case the component unmounts
       return () => clearTimeout(timer);
-    }, [phoneNumber, countryCode]);
+    }, [phoneNumber]);
 
     return (
         <Container className="my-5">
