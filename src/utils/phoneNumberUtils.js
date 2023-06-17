@@ -57,20 +57,23 @@ export function formatNationalNumber(number, separator) {
 }
 
 
+
 export function generateFormats(formattedNumber, countryCode) {
     // In this case we rely on the fact that the number is formatted in certain way:
-    // - starts with '+XX ' (where XX is country code)
+    // - starts with '+XX ' or `+X` (where XX/X is country code prefix)
     // - there are already pre-existing spaces in the national number
-    // Without both of these assumptions present, the function will produce incorrect results.
+    // Without both of these assumptions fullfilled, the function will produce incorrect results.
 
     const countryCodeMapping = countryCodeMappings[countryCode.toLowerCase()];
 
     const nationalNumber = formattedNumber.slice(countryCodeMapping.prefixSlice);
 
-    return countryCodeMapping.prefixesArray.reduce((formats, prefix) => {
-        countryCodeMapping.separatorsArray.forEach(separator => {
-            const reformattedNumber = formatNationalNumber(nationalNumber, separator);
-            formats.push(`${prefix}${prefix ? " " : ""}${reformattedNumber}`);
+    return countryCodeMapping.prefixes.reduce((formats, prefix) => {
+        countryCodeMapping.separators.forEach(separator => {
+            const reformattedNumber = formatNationalNumber(nationalNumber, separator.value);
+            const phoneNumber = `${prefix.value}${prefix.value ? " " : ""}${reformattedNumber}`;
+            const meta = `${prefix.meta}; ${separator.meta}`.trim();
+            formats.push({ phoneNumber, meta });
         });
         return formats;
     }, []);

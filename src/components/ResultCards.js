@@ -10,13 +10,14 @@ function ResultCards({ phoneNumber, countryCode }) {
 
     return (
         <Container className="my-5">
-            {phoneNumberFormats.map((formattedNumber, index) => {
-                const googleSearch = `https://www.google.com/search?q=${encodeURIComponent(formattedNumber).replace(/%20/g, '+')}`;
+            {phoneNumberFormats.map((phoneNumber, index) => {
+                const googleSearch = `https://www.google.com/search?q=${encodeURIComponent(phoneNumber.phoneNumber).replace(/%20/g, '+')}`;
 
                 return (
                     <SingleCard
                         key={index}
-                        formattedNumber={formattedNumber}
+                        formattedNumber={phoneNumber.phoneNumber}
+                        meta={phoneNumber.meta}
                         googleSearch={googleSearch}
                         index={index}
                         copiedIndex={copiedIndex}

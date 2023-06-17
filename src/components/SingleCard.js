@@ -6,7 +6,7 @@ import Fade from 'react-bootstrap/Fade';
 
 import CopyToClipboardButton from './CopyToClipboardButton';
 
-const SingleCard = ({ formattedNumber, googleSearch, index, copiedIndex, setCopiedIndex }) => {
+const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, setCopiedIndex }) => {
     const [fadeIn, setFadeIn] = useState(false);
 
     useEffect(() => {
@@ -23,16 +23,19 @@ const SingleCard = ({ formattedNumber, googleSearch, index, copiedIndex, setCopi
         <Fade in={fadeIn}>
             <Card key={index} className="mb-3">
                 <Card.Header>
-                    {formattedNumber}
+                    <Card.Title>{meta}</Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Row>
                         <Col md={10}>
+                            <Card.Text>
+                                {formattedNumber}
+                            </Card.Text> 
                             <Card.Link href={googleSearch}>
                                 {googleSearch}
                             </Card.Link>
                         </Col>
-                        <Col md={2}>
+                        <Col md={2} className='mt-auto'>
                             <CopyToClipboardButton
                                 text={googleSearch}
                                 index={index}
