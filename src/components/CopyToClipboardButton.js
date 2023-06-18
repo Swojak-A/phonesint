@@ -2,6 +2,8 @@ import React from 'react';
 
 import Button from 'react-bootstrap/Button';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaste, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 
@@ -13,8 +15,8 @@ function CopyToClipboardButton({ text, index, copiedIndex, setCopiedIndex }) {
 
     return (
         <CopyToClipboard text={text} onCopy={onCopy}>
-            <Button variant="secondary" style={{width: '100%'}}>
-                {copiedIndex === index ? "Copied!" : "Copy to clipboard"}
+            <Button variant="secondary" style={{width: '40  px'}} >
+                {copiedIndex === index ? <FontAwesomeIcon icon={faCircleCheck} /> : <FontAwesomeIcon icon={faPaste} />}
             </Button>
         </CopyToClipboard>
     );

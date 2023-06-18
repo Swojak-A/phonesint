@@ -36,7 +36,7 @@ const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, s
                                 {truncateString(googleSearch)}
                             </Card.Link>
                         </Col>
-                        <Col md={2} className='mt-auto'>
+                        <Col md={2} className='mt-auto text-end'>
                             <CopyToClipboardButton
                                 text={googleSearch}
                                 index={index}
