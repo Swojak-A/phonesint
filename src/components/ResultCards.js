@@ -14,19 +14,19 @@ function ResultCards({ phoneNumber, countryCode }) {
         <Container className="my-5">
             <h3 className="mb-3">Combined queries:</h3>
             <SingleCard
-                key="combinedQueryWithQuotationMarks"
+                key="combinedQueryWithoutQuotationMarks"
                 formattedNumber={phoneNumber}
-                meta="All querries combined; Quotation marks"
-                googleSearch={encodeGoogleSearchQuery(phoneNumberFormats.map(phoneNumber => phoneNumber.phoneNumber, true))}
+                meta="All querries combined; No quotation marks"
+                googleSearch={encodeGoogleSearchQuery(phoneNumberFormats.map(phoneNumber => phoneNumber.phoneNumber), false)}
                 index={0}
                 copiedIndex={copiedIndex}
                 setCopiedIndex={setCopiedIndex}
             />
             <SingleCard
-                key="combinedQueryWithoutQuotationMarks"
+                key="combinedQueryWithQuotationMarks"
                 formattedNumber={phoneNumber}
-                meta="All querries combined; No quotation marks"
-                googleSearch={encodeGoogleSearchQuery(phoneNumberFormats.map(phoneNumber => phoneNumber.phoneNumber), false)}
+                meta="All querries combined; Quotation marks"
+                googleSearch={encodeGoogleSearchQuery(phoneNumberFormats.map(phoneNumber => phoneNumber.phoneNumber, true))}
                 index={1}
                 copiedIndex={copiedIndex}
                 setCopiedIndex={setCopiedIndex}

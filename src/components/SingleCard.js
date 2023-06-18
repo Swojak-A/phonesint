@@ -32,7 +32,7 @@ const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, s
                             <Card.Text>
                                 {formattedNumber}
                             </Card.Text> 
-                            <Card.Link href={googleSearch}>
+                            <Card.Link href={googleSearch} target='_blank'>
                                 {truncateString(googleSearch)}
                             </Card.Link>
                         </Col>
