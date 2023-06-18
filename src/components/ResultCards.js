@@ -12,16 +12,27 @@ function ResultCards({ phoneNumber, countryCode }) {
 
     return (
         <Container className="my-5">
+            <h3 className="mb-3">Combined queries:</h3>
+            <SingleCard
+                key="combinedQuery"
+                formattedNumber={phoneNumber}
+                meta="Combined querry"
+                googleSearch={encodeGoogleSearchQuery(phoneNumberFormats.map(phoneNumber => phoneNumber.phoneNumber))}
+                index={0}
+                copiedIndex={copiedIndex}
+                setCopiedIndex={setCopiedIndex}
+            />
+            <h3 className="mb-3">Individual queries:</h3>
             {phoneNumberFormats.map((phoneNumber, index) => {
                 const googleSearch = encodeGoogleSearchQuery(phoneNumber.phoneNumber);
 
                 return (
                     <SingleCard
-                        key={index}
+                        key={index + 1}
                         formattedNumber={phoneNumber.phoneNumber}
                         meta={phoneNumber.meta}
                         googleSearch={googleSearch}
-                        index={index}
+                        index={index + 1}
                         copiedIndex={copiedIndex}
                         setCopiedIndex={setCopiedIndex}
                     />
