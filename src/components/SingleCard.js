@@ -8,6 +8,7 @@ import CopyToClipboardButton from './CopyToClipboardButton';
 
 const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, setCopiedIndex }) => {
     const [fadeIn, setFadeIn] = useState(false);
+    const truncateString = (str) => str.length > 64 ? `${str.slice(0, 62)}...` : str;
 
     useEffect(() => {
       setFadeIn(false);
@@ -32,7 +33,7 @@ const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, s
                                 {formattedNumber}
                             </Card.Text> 
                             <Card.Link href={googleSearch}>
-                                {googleSearch}
+                                {truncateString(googleSearch)}
                             </Card.Link>
                         </Col>
                         <Col md={2} className='mt-auto'>
