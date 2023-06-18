@@ -17,7 +17,7 @@ const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, s
 
       // Clean up function to clear the timeout in case the component unmounts
       return () => clearTimeout(timer);
-    }, [formattedNumber, googleSearch, index, copiedIndex]); // dependency on props
+    }, [formattedNumber, googleSearch]); // dependency on props
 
     return (
         <Fade in={fadeIn}>
