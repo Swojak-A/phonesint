@@ -52,10 +52,9 @@ export function validatePhoneNumber(number, countryCode) {
 }
 
 
-export function formatNationalNumber(number, separator) {
-    return number.split(' ').join(separator);
+export function formatNationalNumber(number, defaultSeparator, newSeparator) {
+    return number.split(defaultSeparator).join(newSeparator);
 }
-
 
 
 export function generateFormats(formattedNumber, countryCode) {
@@ -70,7 +69,7 @@ export function generateFormats(formattedNumber, countryCode) {
 
     return countryCodeMapping.prefixes.reduce((formats, prefix) => {
         countryCodeMapping.separators.forEach(separator => {
-            const reformattedNumber = formatNationalNumber(nationalNumber, separator.value);
+            const reformattedNumber = formatNationalNumber(nationalNumber, countryCodeMapping.defaultSeparator, separator.value);
             const phoneNumber = `${prefix.value}${prefix.value ? " " : ""}${reformattedNumber}`;
             const meta = `${prefix.meta}; ${separator.meta}`.trim();
             formats.push({ phoneNumber, meta });
