@@ -8,6 +8,8 @@ import React, { useState } from 'react';
 import CustomNavbar from './components/CustomNavbar';
 import Header from './components/Header';
 import ResultCards from './components/ResultCards';
+import Footer from './components/Footer';
+
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -27,6 +29,8 @@ function App() {
       />
 
       { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber} countryCode={selectedCountryCode}/> }
+
+      <Footer isSubmitted={isSubmitted} validatedPhoneNumber={validatedPhoneNumber} />
     </>
   );
 }
