@@ -23,7 +23,7 @@ const SingleCard = ({ formattedNumber, meta, googleSearch, index, copiedIndex, s
         <Fade in={fadeIn}>
             <Card key={index} className="mb-3">
                 <Card.Header>
-                    <Card.Title>{meta}</Card.Title>
+                    <Card.Title className='mt-2'>{meta}</Card.Title>
                 </Card.Header>
                 <Card.Body>
                     <Row>
