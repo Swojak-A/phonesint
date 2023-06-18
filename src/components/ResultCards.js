@@ -3,6 +3,8 @@ import Container from "react-bootstrap/Container";
 
 import SingleCard from "./SingleCard";
 import { generateFormats } from "../utils/phoneNumberUtils";
+import { encodeGoogleSearchQuery } from "../utils/uriEncodingUtils";
+
 
 function ResultCards({ phoneNumber, countryCode }) {
     const phoneNumberFormats = generateFormats(phoneNumber, countryCode);
@@ -11,7 +13,7 @@ function ResultCards({ phoneNumber, countryCode }) {
     return (
         <Container className="my-5">
             {phoneNumberFormats.map((phoneNumber, index) => {
-                const googleSearch = `https://www.google.com/search?q=${encodeURIComponent(phoneNumber.phoneNumber).replace(/%20/g, '+')}`;
+                const googleSearch = encodeGoogleSearchQuery(phoneNumber.phoneNumber);
 
                 return (
                     <SingleCard
