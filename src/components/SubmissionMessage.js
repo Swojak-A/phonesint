@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Alert from 'react-bootstrap/Alert';
-import Fade from 'react-bootstrap/Fade';
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Alert from "react-bootstrap/Alert";
+import Fade from "react-bootstrap/Fade";
 
 function SubmissionMessage({ feedbackMessage, feedbackVariant }) {
   const [fadeIn, setFadeIn] = useState(false);
@@ -22,10 +21,10 @@ function SubmissionMessage({ feedbackMessage, feedbackVariant }) {
 
   return (
     <Fade in={fadeIn}>
-      <Row className='submission-message'>
+      <Row className="submission-message">
         <Col>
-        <Alert key={feedbackVariant} variant={feedbackVariant}>
-            { feedbackMessage }
+          <Alert key={feedbackVariant} variant={feedbackVariant}>
+            {feedbackMessage}
           </Alert>
         </Col>
       </Row>
