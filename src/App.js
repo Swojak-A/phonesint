@@ -1,18 +1,19 @@
-import './App.css';
+import "./App.css";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'flag-icon-css/css/flag-icon.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "flag-icon-css/css/flag-icon.min.css";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import CustomNavbar from './components/CustomNavbar';
-import Header from './components/Header';
-import ResultCards from './components/ResultCards';
+import CustomNavbar from "./components/CustomNavbar";
+import Header from "./components/Header";
+import ResultCards from "./components/ResultCards";
+import Footer from "./components/Footer";
 
 function App() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [validatedPhoneNumber, setValidatedPhoneNumber] = useState('');
-  const [selectedCountryCode, setSelectedCountryCode] = useState('PL');
+  const [validatedPhoneNumber, setValidatedPhoneNumber] = useState("");
+  const [selectedCountryCode, setSelectedCountryCode] = useState("PL");
 
   return (
     <>
@@ -26,7 +27,17 @@ function App() {
         setSelectedCountryCode={setSelectedCountryCode}
       />
 
-      { isSubmitted && validatedPhoneNumber && <ResultCards phoneNumber={validatedPhoneNumber} countryCode={selectedCountryCode}/> }
+      {isSubmitted && validatedPhoneNumber && (
+        <ResultCards
+          phoneNumber={validatedPhoneNumber}
+          countryCode={selectedCountryCode}
+        />
+      )}
+
+      <Footer
+        isSubmitted={isSubmitted}
+        validatedPhoneNumber={validatedPhoneNumber}
+      />
     </>
   );
 }
