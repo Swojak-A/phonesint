@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -18,6 +19,7 @@ function Header({
   selectedCountryCode,
   setSelectedCountryCode,
 }) {
+  const { t, i18n } = useTranslation();
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackVariant, setFeedbackVariant] = useState("primary");
@@ -48,9 +50,7 @@ function Header({
       <Container className="header">
         <Row>
           <Col md={12}>
-            <h1 className="mb-3">
-              Generate Google searches for the phone number:
-            </h1>
+            <h1 className="mb-3">{t("header_message")}</h1>
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col sm={1}></Col>
