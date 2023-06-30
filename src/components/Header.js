@@ -64,7 +64,7 @@ function Header({
                   <Form.Group controlId="formBasicSearch">
                     <Form.Control
                       type="search"
-                      placeholder="Enter phone number..."
+                      placeholder={t("search_form_placeholder")}
                       value={inputPhoneNumberValue}
                       onChange={handleInputChange}
                       size="lg"

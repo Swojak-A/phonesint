@@ -1,3 +1,4 @@
 {
-  "header_message": "Wygeneruj wyszukiwania Google dla numeru telefonu:"
+  "header_message": "Wygeneruj wyszukiwania Google dla numeru telefonu:",
+  "search_form_placeholder": "__STRING_NOT_TRANSLATED__"
 }

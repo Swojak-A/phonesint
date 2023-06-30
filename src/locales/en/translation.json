@@ -1,3 +1,4 @@
 {
-  "header_message": "Generate Google searches for the phone number:"
+  "header_message": "Generate Google searches for the phone number:",
+  "search_form_placeholder": "__STRING_NOT_TRANSLATED__"
 }
