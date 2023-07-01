@@ -1,4 +1,13 @@
 {
+  "footer_main_message": "is a project aimed on creating free tools to help OSInt operations involving phone number investigations.",
+  "footer_open_source_message": "we are an open source project.",
+  "footer_need_a_feature_q": "Need a feature?",
+  "footer_need_a_feature_a": "Inform us on GitHub and maybe we will implement it!",
   "header_message": "Generate Google searches for the phone number:",
-  "search_form_placeholder": "__STRING_NOT_TRANSLATED__"
+  "search_form_placeholder": "Enter a phone number...",
+  "search_form_submit_button": "Generate",
+  "res_cards_combined_queries": "Combined queries:",
+  "res_cards_combined_queries_qm_meta": "All querries combined; No quotation marks",
+  "res_cards_combined_queries_no_qm_meta": "All querries combined; Quotation marks",
+  "res_cards_individual_queries": "Individual queries:"
 }

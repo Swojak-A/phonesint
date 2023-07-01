@@ -78,7 +78,7 @@ function Header({
                     size="lg"
                     className="w-100"
                   >
-                    Generate
+                    {t("search_form_submit_button")}
                   </Button>
                 </Col>
                 <Col sm={1}></Col>

@@ -1,4 +1,13 @@
 {
+  "footer_main_message": "to projekt, którego celem jest stworzenie narzędzi do operacji OSIntowych związanych z numerami telefonów.",
+  "footer_open_source_message": "jesteśmy projektem open source.",
+  "footer_need_a_feature_q": "Brakuje Ci jakiejś funkcjonalności?",
+  "footer_need_a_feature_a": "Daj nam znać na Githubie! Być może ją wdrożymy.",
   "header_message": "Wygeneruj wyszukiwania Google dla numeru telefonu:",
-  "search_form_placeholder": "__STRING_NOT_TRANSLATED__"
+  "search_form_placeholder": "Wpisz numer telefonu...",
+  "search_form_submit_button": "Generuj",
+  "res_cards_combined_queries": "Połączone wyszukiwania:",
+  "res_cards_combined_queries_qm_meta": "Połączenie wszystkich query; Brak cudzysłowów",
+  "res_cards_combined_queries_no_qm_meta": "Połączenie wszystkich query; Cudzysłowy",
+  "res_cards_individual_queries": "Pojedyncze wyszukiwania:"
 }

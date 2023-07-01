@@ -13,7 +13,6 @@ function CustomNavbar() {
         <Navbar.Brand href="#home">Phonesint</Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
           <Nav>
-            <Navbar.Text>{"Choose your language: "}</Navbar.Text>
             <LanguageSwitcher />
           </Nav>
         </Navbar.Collapse>
