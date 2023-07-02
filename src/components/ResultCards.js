@@ -18,7 +18,7 @@ function ResultCards({ phoneNumber, countryCode }) {
       <SingleCard
         key="combinedQueryWithoutQuotationMarks"
         formattedNumber={phoneNumber}
-        meta={t("res_cards_combined_queries_qm_meta")}
+        meta={t("meta_combined_qm")}
         googleSearch={encodeGoogleSearchQuery(
           phoneNumberFormats.map((phoneNumber) => phoneNumber.phoneNumber),
           false
@@ -30,7 +30,7 @@ function ResultCards({ phoneNumber, countryCode }) {
       <SingleCard
         key="combinedQueryWithQuotationMarks"
         formattedNumber={phoneNumber}
-        meta={t("res_cards_combined_queries_no_qm_meta")}
+        meta={t("meta_combined_no_qm")}
         googleSearch={encodeGoogleSearchQuery(
           phoneNumberFormats.map((phoneNumber) => phoneNumber.phoneNumber, true)
         )}

@@ -101,7 +101,7 @@ export function generateFormats(formattedNumber, countryCode) {
       const phoneNumber = `${prefix.value}${
         prefix.value ? " " : ""
       }${reformattedNumber}`;
-      const meta = `${prefix.meta}; ${separator.meta}`.trim();
+      const meta = `meta_ind_${prefix.meta}_${separator.meta}`.trim();
       formats.push({ phoneNumber, meta });
     });
     return formats;

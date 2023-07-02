@@ -7,7 +7,19 @@
   "search_form_placeholder": "Enter a phone number...",
   "search_form_submit_button": "Generate",
   "res_cards_combined_queries": "Combined queries:",
-  "res_cards_combined_queries_qm_meta": "All querries combined; No quotation marks",
-  "res_cards_combined_queries_no_qm_meta": "All querries combined; Quotation marks",
-  "res_cards_individual_queries": "Individual queries:"
+  "res_cards_individual_queries": "Individual queries:",
+  "meta_combined_qm": "All querries combined; No quotation marks",
+  "meta_combined_no_qm": "All querries combined; Quotation marks",
+  "meta_ind_prefix_no_prefix_separator_empty": "No prefix; Empty spaces",
+  "meta_ind_prefix_plus_separator_empty": "Prefix with plus; Empty spaces",
+  "meta_ind_prefix_zeros_separator_empty": "Prefix with zeros; Empty spaces",
+  "meta_ind_prefix_standard_separator_empty": "Standard prefix; Empty spaces",
+  "meta_ind_prefix_no_prefix_separator_dash": "No prefix; Dash separator",
+  "meta_ind_prefix_plus_separator_dash": "Prefix with plus; Dash separator",
+  "meta_ind_prefix_zeros_separator_dash": "Prefix with zeros; Dash separator",
+  "meta_ind_prefix_standard_separator_dash": "Standard prefix; Dash separator",
+  "meta_ind_prefix_no_prefix_separator_no_separator": "No prefix; No separator",
+  "meta_ind_prefix_plus_separator_no_separator": "Prefix with plus; No separator",
+  "meta_ind_prefix_zeros_separator_no_separator": "Prefix with zeros; No separator",
+  "meta_ind_prefix_standard_separator_no_separator": "Standard prefix; No separator"
 }
