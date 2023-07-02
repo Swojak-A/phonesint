@@ -5,7 +5,11 @@ import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import Fade from "react-bootstrap/Fade";
 
-function SubmissionMessage({ feedbackMessage, feedbackVariant }) {
+function SubmissionMessage({
+  feedbackMessageHeader,
+  feedbackMessage,
+  feedbackVariant,
+}) {
   const [fadeIn, setFadeIn] = useState(false);
 
   useEffect(() => {
@@ -24,7 +28,9 @@ function SubmissionMessage({ feedbackMessage, feedbackVariant }) {
       <Row className="submission-message">
         <Col>
           <Alert key={feedbackVariant} variant={feedbackVariant}>
-            {feedbackMessage}
+            <Alert.Heading>{feedbackMessageHeader}</Alert.Heading>
+            <hr />
+            <p className="mb-0">{feedbackMessage}</p>
           </Alert>
         </Col>
       </Row>

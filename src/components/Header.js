@@ -21,21 +21,22 @@ function Header({
 }) {
   const { t, i18n } = useTranslation();
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState("");
+  const [feedbackMessageHeader, setFeedbackMessageHeader] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [feedbackVariant, setFeedbackVariant] = useState("primary");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { isValid, message, phoneNumber } = validatePhoneNumber(
-      inputPhoneNumberValue,
-      selectedCountryCode
-    );
+    const { isValid, messageHeader, message, phoneNumber } =
+      validatePhoneNumber(inputPhoneNumberValue, selectedCountryCode);
     setIsSubmitted(true);
     if (isValid) {
+      setFeedbackMessageHeader(messageHeader);
       setFeedbackMessage(message);
       setFeedbackVariant("primary");
       setValidatedPhoneNumber(phoneNumber);
     } else {
+      setFeedbackMessageHeader(messageHeader);
       setFeedbackMessage(message);
       setFeedbackVariant("danger");
     }
@@ -88,6 +89,7 @@ function Header({
               <Col>
                 {isSubmitted && (
                   <SubmissionMessage
+                    feedbackMessageHeader={feedbackMessageHeader}
                     feedbackMessage={feedbackMessage}
                     feedbackVariant={feedbackVariant}
                   />

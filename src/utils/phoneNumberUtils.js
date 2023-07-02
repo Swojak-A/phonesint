@@ -58,12 +58,14 @@ export function validatePhoneNumber(number, countryCode) {
       }
       return {
         isValid: true,
-        message: `Good job! Your input was: ${formattedNumber}`,
+        messageHeader: "Good job!",
+        message: `Your input was: ${formattedNumber}`,
         phoneNumber: formattedNumber,
       };
     } else {
       return {
         isValid: false,
+        messageHeader: "Invalid phone number.",
         message: "This input does not seem to be a valid phone number.",
         phoneNumber: null,
       };
@@ -71,7 +73,8 @@ export function validatePhoneNumber(number, countryCode) {
   } catch (error) {
     return {
       isValid: false,
-      message: `An error occured while parsing: ${error.message}`,
+      messageHeader: `Error occured.`,
+      message: `This error occured while parsing: ${error.message}`,
       phoneNumber: null,
     };
   }
