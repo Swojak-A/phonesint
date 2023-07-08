@@ -3,13 +3,13 @@ export function encodeGoogleSearchQuery(queriedNumber, quotationMarks = true) {
 
   if (quotationMarks) {
     if (Array.isArray(queriedNumber)) {
-      queryString = queriedNumber.map((q) => `"${q}"`).join("+OR+");
+      queryString = queriedNumber.map((q) => `"${q}"`).join(" OR ");
     } else {
       queryString = `"${queriedNumber}"`;
     }
   } else {
     if (Array.isArray(queriedNumber)) {
-      queryString = queriedNumber.join("+OR+");
+      queryString = queriedNumber.join(" OR ");
     } else {
       queryString = queriedNumber;
     }

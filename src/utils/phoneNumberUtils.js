@@ -58,20 +58,26 @@ export function validatePhoneNumber(number, countryCode) {
       }
       return {
         isValid: true,
-        message: `Good job! Your input was: ${formattedNumber}`,
+        messageHeader: "feddback_message_header_valid_number",
+        message: `feddback_message_valid_number`,
+        messageArg: formattedNumber,
         phoneNumber: formattedNumber,
       };
     } else {
       return {
         isValid: false,
-        message: "This input does not seem to be a valid phone number.",
+        messageHeader: "feedback_message_header_invalid_number",
+        message: "feedback_message_invalid_number",
+        messageArg: null,
         phoneNumber: null,
       };
     }
   } catch (error) {
     return {
       isValid: false,
-      message: `An error occured while parsing: ${error.message}`,
+      messageHeader: "feedback_message_header_error",
+      message: "feedback_message_error",
+      messageArg: error.message,
       phoneNumber: null,
     };
   }
@@ -101,7 +107,7 @@ export function generateFormats(formattedNumber, countryCode) {
       const phoneNumber = `${prefix.value}${
         prefix.value ? " " : ""
       }${reformattedNumber}`;
-      const meta = `${prefix.meta}; ${separator.meta}`.trim();
+      const meta = `meta_ind_${prefix.meta}_${separator.meta}`.trim();
       formats.push({ phoneNumber, meta });
     });
     return formats;

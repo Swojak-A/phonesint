@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -18,23 +19,28 @@ function Header({
   selectedCountryCode,
   setSelectedCountryCode,
 }) {
+  const { t, i18n } = useTranslation();
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState("");
+  const [feedbackMessageHeader, setFeedbackMessageHeader] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [feedbackMessageArg, setFeedbackMessageArg] = useState("");
   const [feedbackVariant, setFeedbackVariant] = useState("primary");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { isValid, message, phoneNumber } = validatePhoneNumber(
-      inputPhoneNumberValue,
-      selectedCountryCode
-    );
+    const { isValid, messageHeader, message, messageArg, phoneNumber } =
+      validatePhoneNumber(inputPhoneNumberValue, selectedCountryCode);
     setIsSubmitted(true);
     if (isValid) {
+      setFeedbackMessageHeader(messageHeader);
       setFeedbackMessage(message);
       setFeedbackVariant("primary");
+      setFeedbackMessageArg(messageArg);
       setValidatedPhoneNumber(phoneNumber);
     } else {
+      setFeedbackMessageHeader(messageHeader);
       setFeedbackMessage(message);
+      setFeedbackMessageArg(messageArg);
       setFeedbackVariant("danger");
     }
   };
@@ -48,9 +54,7 @@ function Header({
       <Container className="header">
         <Row>
           <Col md={12}>
-            <h1 className="mb-3">
-              Generate Google searches for the phone number:
-            </h1>
+            <h1 className="mb-3">{t("header_message")}</h1>
             <Form onSubmit={handleSubmit}>
               <Row>
                 <Col sm={1}></Col>
@@ -64,7 +68,7 @@ function Header({
                   <Form.Group controlId="formBasicSearch">
                     <Form.Control
                       type="search"
-                      placeholder="Enter phone number..."
+                      placeholder={t("search_form_placeholder")}
                       value={inputPhoneNumberValue}
                       onChange={handleInputChange}
                       size="lg"
@@ -78,7 +82,7 @@ function Header({
                     size="lg"
                     className="w-100"
                   >
-                    Generate
+                    {t("search_form_submit_button")}
                   </Button>
                 </Col>
                 <Col sm={1}></Col>
@@ -88,7 +92,9 @@ function Header({
               <Col>
                 {isSubmitted && (
                   <SubmissionMessage
+                    feedbackMessageHeader={feedbackMessageHeader}
                     feedbackMessage={feedbackMessage}
+                    feedbackMessageArg={feedbackMessageArg}
                     feedbackVariant={feedbackVariant}
                   />
                 )}
