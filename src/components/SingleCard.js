@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -14,6 +16,7 @@ const SingleCard = ({
   copiedIndex,
   setCopiedIndex,
 }) => {
+  const { t, i18n } = useTranslation();
   const [fadeIn, setFadeIn] = useState(false);
   const truncateString = (str) =>
     str.length > 64 ? `${str.slice(0, 62)}...` : str;
@@ -32,7 +35,7 @@ const SingleCard = ({
     <Fade in={fadeIn}>
       <Card key={index} className="mb-3">
         <Card.Header>
-          <Card.Title className="mt-2">{meta}</Card.Title>
+          <Card.Title className="mt-2">{t(meta)}</Card.Title>
         </Card.Header>
         <Card.Body>
           <Row>

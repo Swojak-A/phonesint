@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -8,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faOsi } from "@fortawesome/free-brands-svg-icons";
 
 function Footer({ isSubmitted, validatedPhoneNumber }) {
+  const { t, i18n } = useTranslation();
   const footerStyle = {
     position: isSubmitted && validatedPhoneNumber ? "static" : "fixed",
     bottom: 0,
@@ -21,12 +23,11 @@ function Footer({ isSubmitted, validatedPhoneNumber }) {
           <Col md={4}>
             <h5>Phonesint</h5>
             <p className="text-muted">
-              <strong>Phonesint</strong> is a project aimed on creating free
-              tools to help OSInt operations involving phone number
-              investigations.
+              <strong>Phonesint</strong> {t("footer_main_message")}
             </p>
             <p className="text-muted">
-              <FontAwesomeIcon icon={faOsi} /> - open source project.
+              <FontAwesomeIcon icon={faOsi} /> -{" "}
+              {t("footer_open_source_message")}
             </p>
           </Col>
           <Col md={4} className="text-center">
@@ -40,10 +41,8 @@ function Footer({ isSubmitted, validatedPhoneNumber }) {
             </a>
           </Col>
           <Col md={4} className="text-end">
-            <h5>Need a feature?</h5>
-            <p className="text-muted">
-              Inform us on GitHub and maybe we will implement it!
-            </p>
+            <h5>{t("footer_need_a_feature_q")}</h5>
+            <p className="text-muted">{t("footer_need_a_feature_a")}</p>
           </Col>
         </Row>
         <Row className="text-center">

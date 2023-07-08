@@ -1,4 +1,6 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+
 import Container from "react-bootstrap/Container";
 
 import SingleCard from "./SingleCard";
@@ -6,16 +8,17 @@ import { generateFormats } from "../utils/phoneNumberUtils";
 import { encodeGoogleSearchQuery } from "../utils/uriEncodingUtils";
 
 function ResultCards({ phoneNumber, countryCode }) {
+  const { t, i18n } = useTranslation();
   const phoneNumberFormats = generateFormats(phoneNumber, countryCode);
   const [copiedIndex, setCopiedIndex] = React.useState(null);
 
   return (
     <Container className="my-5">
-      <h3 className="mb-3">Combined queries:</h3>
+      <h3 className="mb-3">{t("res_cards_combined_queries")}</h3>
       <SingleCard
         key="combinedQueryWithoutQuotationMarks"
         formattedNumber={phoneNumber}
-        meta="All querries combined; No quotation marks"
+        meta={t("meta_combined_qm")}
         googleSearch={encodeGoogleSearchQuery(
           phoneNumberFormats.map((phoneNumber) => phoneNumber.phoneNumber),
           false
@@ -27,7 +30,7 @@ function ResultCards({ phoneNumber, countryCode }) {
       <SingleCard
         key="combinedQueryWithQuotationMarks"
         formattedNumber={phoneNumber}
-        meta="All querries combined; Quotation marks"
+        meta={t("meta_combined_no_qm")}
         googleSearch={encodeGoogleSearchQuery(
           phoneNumberFormats.map((phoneNumber) => phoneNumber.phoneNumber, true)
         )}
@@ -35,7 +38,7 @@ function ResultCards({ phoneNumber, countryCode }) {
         copiedIndex={copiedIndex}
         setCopiedIndex={setCopiedIndex}
       />
-      <h3 className="mb-3">Individual queries:</h3>
+      <h3 className="mb-3">{t("res_cards_individual_queries")}</h3>
       {phoneNumberFormats.map((phoneNumber, index) => {
         const googleSearch = encodeGoogleSearchQuery(phoneNumber.phoneNumber);
 
