@@ -21,5 +21,11 @@
   "meta_ind_prefix_no_prefix_separator_no_separator": "Brak prefixu; Brak separatora",
   "meta_ind_prefix_plus_separator_no_separator": "Prefix z plusem; Brak separatora",
   "meta_ind_prefix_zeros_separator_no_separator": "Prefix z zerami; Brak separatora",
-  "meta_ind_prefix_standard_separator_no_separator": "Standardowy prefix; Brak separatora"
+  "meta_ind_prefix_standard_separator_no_separator": "Standardowy prefix; Brak separatora",
+  "feddback_message_header_valid_number": "Sukces!",
+  "feddback_message_valid_number": "Twój numer to: {{arg}}",
+  "feedback_message_header_invalid_number": "Nieprawidłowy numer telefonu.",
+  "feedback_message_invalid_number": "Podany numer telefonu jes nieprawidłowy.",
+  "feedback_message_header_error": "Wystąpił błąd.",
+  "feedback_message_error": "Wystąpił błąd podczas parsowania numeru telefonu: {{arg}}"
 }

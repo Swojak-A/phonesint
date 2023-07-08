@@ -21,5 +21,11 @@
   "meta_ind_prefix_no_prefix_separator_no_separator": "No prefix; No separator",
   "meta_ind_prefix_plus_separator_no_separator": "Prefix with plus; No separator",
   "meta_ind_prefix_zeros_separator_no_separator": "Prefix with zeros; No separator",
-  "meta_ind_prefix_standard_separator_no_separator": "Standard prefix; No separator"
+  "meta_ind_prefix_standard_separator_no_separator": "Standard prefix; No separator",
+  "feddback_message_header_valid_number": "Good job!",
+  "feddback_message_valid_number": "Your input was: {{arg}}",
+  "feedback_message_header_invalid_number": "Invalid phone number.",
+  "feedback_message_invalid_number": "This input does not seem to be a valid phone number.",
+  "feedback_message_header_error": "Error occured.",
+  "feedback_message_error": "This error occured while parsing: {{arg}}"
 }

@@ -23,21 +23,24 @@ function Header({
   const [inputPhoneNumberValue, setInputPhoneNumberValue] = useState("");
   const [feedbackMessageHeader, setFeedbackMessageHeader] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [feedbackMessageArg, setFeedbackMessageArg] = useState("");
   const [feedbackVariant, setFeedbackVariant] = useState("primary");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const { isValid, messageHeader, message, phoneNumber } =
+    const { isValid, messageHeader, message, messageArg, phoneNumber } =
       validatePhoneNumber(inputPhoneNumberValue, selectedCountryCode);
     setIsSubmitted(true);
     if (isValid) {
       setFeedbackMessageHeader(messageHeader);
       setFeedbackMessage(message);
       setFeedbackVariant("primary");
+      setFeedbackMessageArg(messageArg);
       setValidatedPhoneNumber(phoneNumber);
     } else {
       setFeedbackMessageHeader(messageHeader);
       setFeedbackMessage(message);
+      setFeedbackMessageArg(messageArg);
       setFeedbackVariant("danger");
     }
   };
@@ -91,6 +94,7 @@ function Header({
                   <SubmissionMessage
                     feedbackMessageHeader={feedbackMessageHeader}
                     feedbackMessage={feedbackMessage}
+                    feedbackMessageArg={feedbackMessageArg}
                     feedbackVariant={feedbackVariant}
                   />
                 )}

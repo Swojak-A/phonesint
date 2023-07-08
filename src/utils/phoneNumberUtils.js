@@ -58,23 +58,26 @@ export function validatePhoneNumber(number, countryCode) {
       }
       return {
         isValid: true,
-        messageHeader: "Good job!",
-        message: `Your input was: ${formattedNumber}`,
+        messageHeader: "feddback_message_header_valid_number",
+        message: `feddback_message_valid_number`,
+        messageArg: formattedNumber,
         phoneNumber: formattedNumber,
       };
     } else {
       return {
         isValid: false,
-        messageHeader: "Invalid phone number.",
-        message: "This input does not seem to be a valid phone number.",
+        messageHeader: "feedback_message_header_invalid_number",
+        message: "feedback_message_invalid_number",
+        messageArg: null,
         phoneNumber: null,
       };
     }
   } catch (error) {
     return {
       isValid: false,
-      messageHeader: `Error occured.`,
-      message: `This error occured while parsing: ${error.message}`,
+      messageHeader: "feedback_message_header_error",
+      message: "feedback_message_error",
+      messageArg: error.message,
       phoneNumber: null,
     };
   }
