@@ -10,45 +10,65 @@ import { encodeGoogleSearchQuery } from "../utils/uriEncodingUtils";
 function ResultCards({ phoneNumber, countryCode }) {
   const { t, i18n } = useTranslation();
   const phoneNumberFormats = generateFormats(phoneNumber, countryCode);
+  const phoneNumberFormatsFlat = phoneNumberFormats.reduce(
+    (acc, section) => acc.concat(section.formatsArray),
+    []
+  );
   const [copiedIndex, setCopiedIndex] = React.useState(null);
+
+  let overallIndex = 1;
 
   return (
     <Container className="my-5">
       <h3 className="mb-3">{t("res_cards_combined_queries")}</h3>
-      <SingleCard
-        key="combinedQueryWithoutQuotationMarks"
-        formattedNumber={phoneNumber}
-        meta={t("meta_combined_qm")}
-        googleSearch={encodeGoogleSearchQuery(
-          phoneNumberFormats.map((phoneNumber) => phoneNumber.phoneNumber),
-          false
-        )}
-        index={0}
-        copiedIndex={copiedIndex}
-        setCopiedIndex={setCopiedIndex}
-      />
-      <SingleCard
-        key="combinedQueryWithQuotationMarks"
-        formattedNumber={phoneNumber}
-        meta={t("meta_combined_no_qm")}
-        googleSearch={encodeGoogleSearchQuery(
-          phoneNumberFormats.map((phoneNumber) => phoneNumber.phoneNumber, true)
-        )}
-        index={1}
-        copiedIndex={copiedIndex}
-        setCopiedIndex={setCopiedIndex}
-      />
-      <h3 className="mb-3">{t("res_cards_individual_queries")}</h3>
-      {phoneNumberFormats.map((phoneNumber, index) => {
-        const googleSearch = encodeGoogleSearchQuery(phoneNumber.phoneNumber);
+      {phoneNumberFormats.map((section, index) => {
+        const googleSearch = encodeGoogleSearchQuery(
+          section.formatsArray.map((phoneNumber) => phoneNumber.phoneNumber)
+        );
+        overallIndex += 1;
 
         return (
           <SingleCard
-            key={index + 2}
+            key={overallIndex}
+            formattedNumber={section.formatsArray[0].phoneNumber}
+            meta={section.meta + "_qm"}
+            googleSearch={googleSearch}
+            index={overallIndex}
+            copiedIndex={copiedIndex}
+            setCopiedIndex={setCopiedIndex}
+          />
+        );
+        })}
+      {phoneNumberFormats.map((section, index) => {
+        const googleSearch = encodeGoogleSearchQuery(
+          section.formatsArray.map((phoneNumber) => phoneNumber.phoneNumber), false
+        );
+        overallIndex += 1;
+
+        return (
+          <SingleCard
+            key={overallIndex}
+            formattedNumber={section.formatsArray[0].phoneNumber}
+            meta={section.meta + "_noqm"}
+            googleSearch={googleSearch}
+            index={overallIndex}
+            copiedIndex={copiedIndex}
+            setCopiedIndex={setCopiedIndex}
+          />
+        );
+          })}
+      <h3 className="mb-3">{t("res_cards_individual_queries")}</h3>
+      {phoneNumberFormatsFlat.map((phoneNumber, index) => {
+        const googleSearch = encodeGoogleSearchQuery(phoneNumber.phoneNumber);
+        overallIndex += 1;
+
+        return (
+          <SingleCard
+            key={overallIndex}
             formattedNumber={phoneNumber.phoneNumber}
             meta={phoneNumber.meta}
             googleSearch={googleSearch}
-            index={index + 2}
+            index={overallIndex}
             copiedIndex={copiedIndex}
             setCopiedIndex={setCopiedIndex}
           />
