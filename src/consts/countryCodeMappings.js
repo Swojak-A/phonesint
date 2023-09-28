@@ -6,9 +6,9 @@ const countryCodeMappings = {
     defaultSeparator: " ",
     prefixes: [
       { value: "", meta: "prefix_no_prefix" },
+      { value: "48", meta: "prefix_standard" },
       { value: "+48", meta: "prefix_plus" },
       { value: "0048", meta: "prefix_zeros" },
-      { value: "48", meta: "prefix_standard" },
     ],
     separators: [
       { value: " ", meta: "separator_empty" },
