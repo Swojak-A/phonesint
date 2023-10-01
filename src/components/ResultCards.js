@@ -31,32 +31,34 @@ function ResultCards({ phoneNumber, countryCode }) {
           <SingleCard
             key={overallIndex}
             formattedNumber={section.formatsArray[0].phoneNumber}
-            meta={section.meta + "_qm"}
+            meta={`${section.meta}_qm`}
             googleSearch={googleSearch}
             index={overallIndex}
             copiedIndex={copiedIndex}
             setCopiedIndex={setCopiedIndex}
           />
         );
-        })}
+      })}
       {phoneNumberFormats.map((section, index) => {
         const googleSearch = encodeGoogleSearchQuery(
           section.formatsArray.map((phoneNumber) => phoneNumber.phoneNumber), false
         );
         overallIndex += 1;
 
+        console.log(`${section.meta}_noqm`)
+
         return (
           <SingleCard
             key={overallIndex}
             formattedNumber={section.formatsArray[0].phoneNumber}
-            meta={section.meta + "_noqm"}
+            meta={`${section.meta}_noqm`}
             googleSearch={googleSearch}
             index={overallIndex}
             copiedIndex={copiedIndex}
             setCopiedIndex={setCopiedIndex}
           />
         );
-          })}
+      })}
       <h3 className="mb-3">{t("res_cards_individual_queries")}</h3>
       {phoneNumberFormatsFlat.map((phoneNumber, index) => {
         const googleSearch = encodeGoogleSearchQuery(phoneNumber.phoneNumber);
