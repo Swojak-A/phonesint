@@ -94,11 +94,10 @@ export function generateFormats(formattedNumber, countryCode) {
   // Without both of these assumptions fullfilled, the function will produce incorrect results.
 
   const countryCodeMapping = countryCodeMappings[countryCode.toLowerCase()];
-
   const nationalNumber = formattedNumber.slice(countryCodeMapping.prefixSlice);
 
-  return countryCodeMapping.prefixes.reduce((formats, prefix) => {
-    countryCodeMapping.separators.forEach((separator) => {
+  return countryCodeMapping.prefixes.map((prefix) => {
+    const formatsArray = countryCodeMapping.separators.map((separator) => {
       const reformattedNumber = formatNationalNumber(
         nationalNumber,
         countryCodeMapping.defaultSeparator,
@@ -108,8 +107,10 @@ export function generateFormats(formattedNumber, countryCode) {
         prefix.value ? " " : ""
       }${reformattedNumber}`;
       const meta = `meta_ind_${prefix.meta}_${separator.meta}`.trim();
-      formats.push({ phoneNumber, meta });
+      return { phoneNumber, meta };
     });
-    return formats;
-  }, []);
+
+    const sectionMeta = `meta_cmb_${prefix.meta}`;
+    return { formatsArray, meta: sectionMeta };
+  });
 }
